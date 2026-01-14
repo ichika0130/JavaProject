@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.cn">
+<head>
+    <title>Greeting! 大家豪！！！大家豪啊！！！</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p th:text="'Hello, ' + ${name} + '!'" />
+<p>
+    你说的对 但是 <br/>
+    Yorushika是由作曲家n-buna和主唱suis组成的日本摇滚乐团。<br/>
+    乐队以“夜”为主题，融合摇滚和J-Pop，擅长通过专辑构建完整故事。<br/>
+    Yorushika的名字源自首张迷你专辑《夏草が邪魔をする》中的一首歌《雲と幽霊》的歌词，<br/>
+    其中提到的“夜しかもう眠れずに”成为了乐队名称的灵感来源。乐队自2017年成立以来，<br/>
+    凭借其独特的音乐风格迅速崛起，获得了第34届日本金唱片大奖“五大最佳新人（日本音乐）”的奖项。<br/>
+    Yorushika的音乐作品不仅在音乐界获得了认可，也在粉丝中产生了深远的影响。<br/>
+</p>
+<img th:src="@{/images/Yorushika_logo.jpg}" width="900" height="600"/>
+</body>
+</html>
