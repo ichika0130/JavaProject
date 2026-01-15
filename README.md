@@ -86,7 +86,7 @@ Automatic Table Creation: Utilizing JPA's ddl-auto feature, the database table s
 
 Debugging tools: The `/h2-console` console is enabled for convenient real-time monitoring of the database status. JDBC connection address: `jdbc:h2:mem:testdb`.
 <img width="1898" height="924" alt="image" src="https://github.com/user-attachments/assets/cc0c8ea7-7e58-4abf-83db-092a7dd65709" />
-
+<img width="1040" height="702" alt="image" src="https://github.com/user-attachments/assets/fd2921bb-53ca-42eb-a156-b6d4eeb1f9de" />
 
 5. Automated API Documentation (Swagger/OpenAPI): Springdoc-openapi is integrated, achieving zero-maintenance documentation.
 
@@ -96,5 +96,10 @@ Access address: http://localhost:8080/swagger-ui/index.html
 Through Swagger UI, API smoke testing can be performed directly in the browser, greatly improving development and debugging efficiency.
 <img width="1787" height="885" alt="image" src="https://github.com/user-attachments/assets/1d347d96-1dc8-4de1-a580-1b1e0ab8cca0" />
 
-
+## Quick Start
+1. Clone the repository.
+2. Ensure you have **Java 17** installed.
+3. Run the application: `./mvnw spring-boot:run`
+4. Access **Swagger UI**: `http://localhost:8080/swagger-ui/index.html` to test all APIs.
+5. Access **H2 Console**: `http://localhost:8080/console` (JDBC URL: `jdbc:h2:mem:testdb`) to view persistence data.
 
