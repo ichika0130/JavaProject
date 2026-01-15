@@ -58,6 +58,8 @@ UpdateProductRequest: A dedicated data object for update operations, ensuring AP
 
 ProductResponse: A unified output model, formatting JSON data returned to the client.
 
+Implementing DTOs at this stage ensures the scalability of the API. Even with minimal fields (ID, Name), this structure allows for future expansion (e.g., adding sensitive price or stock data) without breaking the client-facing contract.
+
 Automated Mapping: Internally, object conversion is implemented manually (or in conjunction with a Mapper) through the Service layer, reflecting the norms of object-oriented design.
 
 <img width="967" height="642" alt="image" src="https://github.com/user-attachments/assets/7b90a585-30a5-4d25-bf39-fa04029364aa" />
