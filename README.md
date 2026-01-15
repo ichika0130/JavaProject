@@ -38,12 +38,63 @@ Let's go to the task2 then
 
 ###  Task 2: Advanced API Features & DB Integration
 
-Task 2.B (Swagger UI): Integrates springdoc-openapi; automated documentation can be viewed at http://localhost:8080/swagger-ui/index.html.
+1. Layered Architecture Design
 
-Task 2.C/E (CRUD Operations): Implements complete CRUD logic.
+In Task 2, I implemented strict code layering to ensure separation of concerns:
 
-Task 2.D (Exception Handling): Uses @ControllerAdvice and a custom ProductExceptionSupplier to uniformly handle exceptions such as 404 Not Found, avoiding ugly 500 errors.
+Controller Layer: Handles HTTP requests, using `@PathVariable` and `@RequestBody` for RESTful resource location.
 
-Task 2.G (JPA & H2): Migrates in-memory storage to an H2 Database and performs persistence operations using Spring Data JPA.
+Service Layer: The core of business logic, handling data transformation and business rule validation.
+
+Repository Layer: Based on Spring Data JPA, it implements basic CRUD persistence operations with zero code by inheriting the `JpaRepository` interface.
+
+<img width="406" height="819" alt="image" src="https://github.com/user-attachments/assets/6e0aec69-65d9-4999-8597-91b404347cfe" />
+
+2. Data Transfer Objects & Mapping (DTO & Mapping)
+
+To protect internal entities from direct exposure to the frontend, I introduced the Request/Response pattern:
+
+UpdateProductRequest: A dedicated data object for update operations, ensuring API security.
+
+ProductResponse: A unified output model, formatting JSON data returned to the client.
+
+Automated Mapping: Internally, object conversion is implemented manually (or in conjunction with a Mapper) through the Service layer, reflecting the norms of object-oriented design.
+
+<img width="967" height="642" alt="image" src="https://github.com/user-attachments/assets/7b90a585-30a5-4d25-bf39-fa04029364aa" />
+<img width="975" height="628" alt="image" src="https://github.com/user-attachments/assets/a240356f-34f3-4c4e-8c9c-c2df5931913a" />
+
+3. Robust Exception Handling Mechanism (Global Exception Handling)
+
+This is a major highlight of Task 2. Instead of directly throwing a 500 error, I implemented global exception interception:
+
+<img width="772" height="146" alt="image" src="https://github.com/user-attachments/assets/bc012fa2-0e88-46f7-a826-911fc304f399" />
+
+
+Custom Supplier: Common error logic (such as productNotFoundException(id)) is encapsulated using ProductExceptionSupplier.
+
+Status Code Management: Combined with @ControllerAdvice, a precise 404 Not Found status code and user-friendly JSON error message are returned when a resource does not exist, improving the API user experience.
+
+<img width="992" height="593" alt="image" src="https://github.com/user-attachments/assets/ea72127e-50ad-41a7-9d47-c071541be242" />
+
+
+4. Persistence Layer and Database Integration (JPA & H2)
+
+From Memory to Database: The original HashMap storage solution was migrated to an H2 in-memory database.
+<img width="849" height="530" alt="image" src="https://github.com/user-attachments/assets/151e9c51-a98f-49a1-998b-f1c916ee71fc" />
+
+Automatic Table Creation: Utilizing JPA's ddl-auto feature, the database table structure is automatically generated based on the Product entity class.
+
+Debugging tools: The `/h2-console` console is enabled for convenient real-time monitoring of the database status. JDBC connection address: `jdbc:h2:mem:testdb`.
+<img width="1898" height="924" alt="image" src="https://github.com/user-attachments/assets/cc0c8ea7-7e58-4abf-83db-092a7dd65709" />
+
+
+5. Automated API Documentation (Swagger/OpenAPI): Springdoc-openapi is integrated, achieving zero-maintenance documentation.
+
+Access address: http://localhost:8080/swagger-ui/index.html
+<img width="1861" height="924" alt="image" src="https://github.com/user-attachments/assets/5d4272da-ec3b-457a-b5eb-fe209a2fe478" />
+
+Through Swagger UI, API smoke testing can be performed directly in the browser, greatly improving development and debugging efficiency.
+<img width="1787" height="885" alt="image" src="https://github.com/user-attachments/assets/1d347d96-1dc8-4de1-a580-1b1e0ab8cca0" />
+
 
 
